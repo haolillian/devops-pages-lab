@@ -1,0 +1,29 @@
+name: Update GitHub Activity
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # 每 12 小時自動執行一次
+  workflow_dispatch:       # 可手動觸發
+  push:
+    branches: [ main ]
+
+jobs:
+  update-activity:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Update recent GitHub activity
+        uses: readme-activity-readme/github-activity-readme@v1
+        with:
+          GH_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update activity log"
+          git push
