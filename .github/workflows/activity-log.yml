@@ -1,5 +1,6 @@
-name: Update GitHub Activity
+name: Auto Update GitHub Activity
 
+# 觸發器
 on:
   workflow_dispatch:       # 手動觸發
   schedule:
@@ -10,16 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # 先把 repo 內容拉下來
+      - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Update recent GitHub activity
-        uses: peter-evans/devops-pages-lab@v1
         with:
-          TOKEN: ${{ secrets.MY_TOKEN }}        # 作業要求用自己創建的 PAT
-          GH_USERNAME: haolillian            # 改成你的 GitHub 帳號
+          fetch-depth: 0
+
+      # 安裝 Node.js（若使用 GitHub Activity Readme Action 需要）
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 更新 README.md 的活動區塊
+      - name: Update recent GitHub activity
+        uses: peter-evans/github-activity-readme@v1
+        with:
+          TOKEN: ${{ secrets.MY_TOKEN }}        
+          GH_USERNAME: haolillian            
           COMMIT_NAME: "github-actions[bot]"
           COMMIT_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
           COMMIT_MSG: "Update activity log"
           TARGET_FILE: "README.md"
-          MAX_LINES: 10                       # 顯示最近 10 條活動
+          MAX_LINES: 10                       
