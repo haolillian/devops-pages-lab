@@ -1,5 +1,4 @@
 # devops-pages-lab
-# My DevOps Activity Log
 
 這個頁面會自動顯示我最近的 GitHub 活動。
 
