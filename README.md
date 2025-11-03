@@ -5,5 +5,5 @@
 ---
 
 ## 最近活動
-<!--START_ACTIVITY-->
-<!--END_ACTIVITY-->
+<!--START_SECTION:activity-->
+<!--END_SECTION:activity-->
