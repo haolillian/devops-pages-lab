@@ -16,7 +16,8 @@ jobs:
       - name: Update recent GitHub activity
         uses: jamesgeorge007/github-activity-readme@v0.4.1
         with:
-          GH_USERNAME: your-github-username  # <- 改成你的帳號
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+          GH_USERNAME: haolillian
           COMMIT_NAME: "github-actions[bot]"
           COMMIT_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
           COMMIT_MSG: "Update activity log"
