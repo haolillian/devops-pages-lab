@@ -1,36 +1,33 @@
 name: Auto Update GitHub Activity
 
-# 觸發器
 on:
-  workflow_dispatch:       # 手動觸發
+  workflow_dispatch:
   schedule:
-    - cron: '0 */12 * * *' # 每 12 小時自動更新一次
+    - cron: '0 */12 * * *'
 
 jobs:
   update-activity:
     runs-on: ubuntu-latest
 
     steps:
-      # 先把 repo 內容拉下來
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 安裝 Node.js（若使用 GitHub Activity Readme Action 需要）
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 更新 README.md 的活動區塊
       - name: Update recent GitHub activity
-        uses: peter-evans/github-activity-readme@v1
+        uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}   # 你的 PAT
         with:
-          TOKEN: ${{ secrets.MY_TOKEN }}        
-          GH_USERNAME: haolillian            
+          GH_USERNAME: haolillian
           COMMIT_NAME: "github-actions[bot]"
           COMMIT_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
           COMMIT_MSG: "Update activity log"
           TARGET_FILE: "README.md"
-          MAX_LINES: 10                       
+          MAX_LINES: 10
