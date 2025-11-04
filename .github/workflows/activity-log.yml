@@ -1,51 +1,44 @@
-name: Auto Update GitHub Activity
+name: Auto Update Activity Log
 
 on:
-  workflow_dispatch:       # 手動執行
+  workflow_dispatch:
+
   schedule:
-    - cron: "0 */6 * * *"  # 每 6 小時自動執行
+    - cron: '0 0 * * *'
+
+  push:
+    branches:
+      - main
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: write # Required to commit the updated README.md
+  actions: read
+  statuses: read
 
 jobs:
-  update-readme:
+  update-activity:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Generate GitHub activity log
-        uses: Readme-Workflows/recent-activity@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-
-      - name: Commit and push changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "🔄 Update recent GitHub activity" || echo "No changes to commit"
-          git push
-
-  deploy-pages:
-    needs: update-readme
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload site files
-        uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          token: ${{ secrets.TOKEN }}
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Generate Activity Log
+        uses: TheDanniCraft/activity-log@v1.2.0
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          
+          type: README
+          username: ${{ github.repository_owner }}          
+          placeholder: '<!-- START_SECTION:activity-log --><!-- END_SECTION:activity-log -->'
+
+      - name: Commit and Push Changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: 'Activity Bot'
+          author_email: 'action@github.com'
+          message: 'docs: Auto-updated activity log'
+          add: 'README.md'
+          token: ${{ secrets.MY_TOKEN }}
