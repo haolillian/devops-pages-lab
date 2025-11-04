@@ -23,7 +23,7 @@ jobs:
       - name: Generate GitHub activity log
         uses: Readme-Workflows/recent-activity@main
         env:
-          GITHUB_TOKEN: ${{ secrets.ＭY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
 
       # Step 2: Fetch recent commits
       - name: Fetch latest commits
