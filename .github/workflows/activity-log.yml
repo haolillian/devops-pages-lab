@@ -21,7 +21,7 @@ jobs:
 
       # Step 1: Update recent activity
       - name: Generate GitHub activity log
-        uses: Readme-Workflows/recent-activity@v3
+        uses: Readme-Workflows/recent-activity@main
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
