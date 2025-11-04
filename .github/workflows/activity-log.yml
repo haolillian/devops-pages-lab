@@ -11,7 +11,7 @@ on:
       - main
 
 permissions:
-  contents: write # Required to commit the updated README.md
+  contents: write 
   actions: read
   statuses: read
 
@@ -28,12 +28,14 @@ jobs:
       - name: Generate Activity Log
         uses: TheDanniCraft/activity-log@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.MY_TOKEN }}
           
-          GITHUB_USERNAME: ${{ github.repository_owner }} 
-          OUTPUT_STYLE: 'markdown' 
+          github_username: ${{ github.repository_owner }}
           
-         
+          output_style: 'markdown' 
+
+          placeholder: '<!-- START_SECTION:activity-log --><!-- END_SECTION:activity-log -->'
+
       - name: Commit and Push Changes
         uses: EndBug/add-and-commit@v9
         with:
@@ -41,4 +43,5 @@ jobs:
           author_email: 'action@github.com'
           message: 'docs: Auto-updated activity log'
           add: 'README.md'
+          # ACTION: Use MY_TOKEN as specified by the user
           token: ${{ secrets.MY_TOKEN }}
