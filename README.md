@@ -20,7 +20,8 @@
 </ol>
 <!--END_SECTION:activity-->
 
-## Recent Commits
-<!--START_SECTION:commits-->
-(最近 commits 會由 workflow 自動更新)
-<!--END_SECTION:commits-->
+## Recent Activity
+
+<!--RECENT_ACTIVITY:start-->
+<!--RECENT_ACTIVITY:end-->
+
