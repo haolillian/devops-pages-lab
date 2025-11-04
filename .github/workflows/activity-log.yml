@@ -28,12 +28,12 @@ jobs:
       - name: Generate Activity Log
         uses: TheDanniCraft/activity-log@v1
         with:
-          github_token: ${{ secrets.MY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           
-          type: README
-          username: ${{ github.repository_owner }}          
-          placeholder: '<!-- START_SECTION:activity-log --><!-- END_SECTION:activity-log -->'
-
+          GITHUB_USERNAME: ${{ github.repository_owner }} 
+          OUTPUT_STYLE: 'markdown' 
+          
+         
       - name: Commit and Push Changes
         uses: EndBug/add-and-commit@v9
         with:
