@@ -26,7 +26,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
 
       - name: Generate Activity Log
-        uses: TheDanniCraft/activity-log@v1.2.0
+        uses: TheDanniCraft/activity-log@v1
         with:
           github_token: ${{ secrets.TOKEN }}
           
