@@ -19,3 +19,8 @@
 <li>📝 Committed to <a href="https://github.com/haolillian/devops-pages-lab/commit/f2316086e6f405028d95e83de4b98523f8e8736b">haolillian/devops-pages-lab</a></li>
 </ol>
 <!--END_SECTION:activity-->
+
+## Recent Commits
+<!--START_SECTION:commits-->
+(最近 commits 會由 workflow 自動更新)
+<!--END_SECTION:commits-->
