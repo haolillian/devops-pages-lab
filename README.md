@@ -7,7 +7,7 @@
 ## Recent Activity
 
 <!--RECENT_ACTIVITY:start-->
-1. ⬆️ Pushed undefined commit(s) to [haolillian/devsecops-flake8-demo](https://github.com/haolillian/devsecops-flake8-demo)<br>
+1. 🤝 Became collaborator on [93weiwei/assignment11](https://github.com/93weiwei/assignment11)<br>
 2. ⬆️ Pushed undefined commit(s) to [haolillian/devsecops-flake8-demo](https://github.com/haolillian/devsecops-flake8-demo)<br>
 3. ⬆️ Pushed undefined commit(s) to [haolillian/devsecops-flake8-demo](https://github.com/haolillian/devsecops-flake8-demo)<br>
 4. ⬆️ Pushed undefined commit(s) to [haolillian/devsecops-flake8-demo](https://github.com/haolillian/devsecops-flake8-demo)<br>
